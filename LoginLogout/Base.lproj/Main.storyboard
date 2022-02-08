@@ -9,10 +9,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Login View Controller-->
+        <!--Main View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="LoginViewController" customModule="LoginLogout" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="MainViewController" customModule="LoginLogout" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -37,6 +37,9 @@
                                         <buttonConfiguration key="configuration" style="tinted" title="Log In">
                                             <fontDescription key="titleFontDescription" type="system" pointSize="25"/>
                                         </buttonConfiguration>
+                                        <connections>
+                                            <action selector="touchLoginButton" destination="BYZ-38-t0r" eventType="touchUpInside" id="9Hd-NB-9ZO"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                             </stackView>
@@ -50,6 +53,9 @@
                                         <buttonConfiguration key="configuration" style="tinted" title="Forgot User Name?">
                                             <fontDescription key="titleFontDescription" type="system" pointSize="17"/>
                                         </buttonConfiguration>
+                                        <connections>
+                                            <action selector="showAlertUserName:" destination="BYZ-38-t0r" eventType="touchUpInside" id="YWm-FN-47W"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eBU-6h-Hef">
                                         <rect key="frame" x="191" y="0.0" width="191" height="34.333333333333336"/>
@@ -61,6 +67,16 @@
                                     </button>
                                 </subviews>
                             </stackView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ALC-le-0Pr">
+                                <rect key="frame" x="16" y="310.33333333333331" width="382" height="25"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="25" id="v5j-wx-TVC"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBrownColor"/>
@@ -68,15 +84,23 @@
                             <constraint firstItem="xQY-NW-e8W" firstAttribute="top" secondItem="VFh-oB-rRP" secondAttribute="bottom" constant="40" id="5r4-3B-Jr4"/>
                             <constraint firstItem="xQY-NW-e8W" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="Fnq-3J-WCA"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="VFh-oB-rRP" secondAttribute="trailing" constant="40" id="KPx-Vi-eRi"/>
+                            <constraint firstItem="ALC-le-0Pr" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="Pyo-wV-wtD"/>
                             <constraint firstItem="VFh-oB-rRP" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="40" id="Zex-mZ-nO7"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="xQY-NW-e8W" secondAttribute="trailing" constant="16" id="aLO-PP-Xdw"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="ALC-le-0Pr" secondAttribute="trailing" constant="16" id="oPE-mw-LUS"/>
+                            <constraint firstItem="ALC-le-0Pr" firstAttribute="top" secondItem="xQY-NW-e8W" secondAttribute="bottom" constant="20" id="qsT-sc-7qa"/>
                             <constraint firstItem="VFh-oB-rRP" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="40" id="zrt-dZ-pxU"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="passwordTF" destination="L9y-Bd-elB" id="Kxn-Th-ZxN"/>
+                        <outlet property="userNameTF" destination="XH3-dZ-LQE" id="qFV-SL-hng"/>
+                        <outlet property="welcomeTF" destination="ALC-le-0Pr" id="8yR-it-uug"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="92.753623188405811" y="97.767857142857139"/>
+            <point key="canvasLocation" x="92.753623188405811" y="97.010869565217405"/>
         </scene>
     </scenes>
     <resources>
