@@ -7,31 +7,41 @@
 
 import UIKit
 
-class MainViewController: UIViewController {
-
-    @IBOutlet weak var userNameTF: UITextField!
-    @IBOutlet weak var passwordTF: UITextField!
+class LoginViewController: UIViewController {
     
-    @IBOutlet weak var welcomeTF: UILabel!
+    @IBOutlet weak var userNameTF: UITextField!
+    
+    @IBOutlet weak var passWordTF: UITextField!
+    
     
     private let userName = "Admin"
-    private let passWord = "mypass"
+    private let passWord = "pass"
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        passwordTF.isSecureTextEntry = true
     }
-
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard let welcomeVC = segue.destination as? WelcomeViewController else {return}
+        welcomeVC.textGreeting = userName
+    }
+    
     @IBAction func touchLoginButton() {
         guard let user = userNameTF.text else {return}
-        guard let pass = passwordTF.text else {return}
+        guard let pass = passWordTF.text else {return}
         
         if user == userName && pass == passWord {
-            welcomeTF.text = "Welcome, " + user + "!"
+            performSegue(withIdentifier: "loginVCSegue", sender: nil)
         } else {
             showAlert(title: "Access denied", message: "Wrong user name or password")
         }
+    }
+    
+    @IBAction func unwind(for segue: UIStoryboardSegue) {
+        guard let loginVC = segue.destination as? LoginViewController else {return}
+        loginVC.userNameTF.text = ""
+        loginVC.passWordTF.text = ""
     }
     
     @IBAction func getUserName() {
@@ -39,7 +49,7 @@ class MainViewController: UIViewController {
     }
     
     @IBAction func getPassword() {
-       showAlert(title: "Enter password:", message: passWord)
+        showAlert(title: "Enter password:", message: passWord)
     }
     
     private func showAlert(title: String, message: String) {
@@ -47,7 +57,6 @@ class MainViewController: UIViewController {
         let buttonOK = UIAlertAction(title: "OK", style: .default)
         
         alert.addAction(buttonOK)
-        
         present(alert, animated: true)
     }
 }
