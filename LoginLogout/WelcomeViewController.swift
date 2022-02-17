@@ -10,10 +10,11 @@ import UIKit
 class WelcomeViewController: UIViewController {
 
     @IBOutlet weak var messageView: UILabel!
-    var textGreeting: String = ""
+    var textGreeting = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        messageView.layer.masksToBounds = true
         messageView.layer.cornerRadius = 10
         messageView.text = "Welcome, \(textGreeting) !"
     }

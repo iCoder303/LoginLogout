@@ -8,25 +8,21 @@
 import UIKit
 
 class LoginViewController: UIViewController {
-    
+    //MARK: - IB Outlets
     @IBOutlet weak var userNameTF: UITextField!
-    
     @IBOutlet weak var passWordTF: UITextField!
     
-    
+    //MARK: - Private properties
     private let userName = "Admin"
     private let passWord = "pass"
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-    }
-    
+    //MARK: - Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard let welcomeVC = segue.destination as? WelcomeViewController else {return}
         welcomeVC.textGreeting = userName
     }
     
+    //MARK: - IB Actions
     @IBAction func touchLoginButton() {
         guard let user = userNameTF.text else {return}
         guard let pass = passWordTF.text else {return}
@@ -39,9 +35,8 @@ class LoginViewController: UIViewController {
     }
     
     @IBAction func unwind(for segue: UIStoryboardSegue) {
-        guard let loginVC = segue.destination as? LoginViewController else {return}
-        loginVC.userNameTF.text = ""
-        loginVC.passWordTF.text = ""
+        userNameTF.text = ""
+        passWordTF.text = ""
     }
     
     @IBAction func getUserName() {
@@ -52,6 +47,7 @@ class LoginViewController: UIViewController {
         showAlert(title: "Enter password:", message: passWord)
     }
     
+    //MARK: - Private Methods
     private func showAlert(title: String, message: String) {
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
         let buttonOK = UIAlertAction(title: "OK", style: .default)
